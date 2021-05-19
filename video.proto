@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package videoservice;
+
+service VideoService {
+  rpc callVideo (EmptyRequest) returns (stream VideoResponse);
+}
+
+message EmptyRequest {}
+
+message VideoResponse {
+  bytes videoStream = 1;
+}
