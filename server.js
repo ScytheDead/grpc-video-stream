@@ -15,6 +15,9 @@ const packageDefinition = protoLoader.loadSync(
 const { videoservice } = grpc.loadPackageDefinition(packageDefinition);
 
 function callVideo(call) {
+  const { start, end } = call.metadata;
+
+  console(call.metadata);
   const videoDataStream = fs.createReadStream('./sample.mp4');
   videoDataStream.on('data', chunk => {
     call.write({ videoStream: chunk });
